@@ -1,0 +1,30 @@
+{{#if success}}
+<div class="flex flex-col justify-center items-center w-auto m-4">
+    <div class="flex flex-row justify-between items-center bg-green-200 border-2 border-green-600 rounded-lg relative">
+        <div class="italic text-green-800 px-2 mr-5">
+            {{success}}
+        </div>
+        <button type="button"
+            class="flex flex-col justify-center items-center text-black border-l-2 border-green-600 p-2 font-bold text-green-600"
+            onclick="reload()">x</button>
+    </div>
+</div>
+{{/if}}
+
+{{#if message}}
+<div class="flex flex-col justify-center items-center w-auto m-4">
+    <div class="flex flex-row justify-between items-center bg-red-200 border-2 border-red-600 rounded-lg relative">
+        <div class="italic text-red-800 px-2 mr-5">
+            {{message}}
+        </div>
+        <button type="button"
+            class="flex flex-col justify-center items-center text-black border-l-2 border-red-600 p-2 font-bold text-red-600"
+            onclick="reload()">x</button>
+    </div>
+</div>
+{{/if}}
+<script>
+    function reload() {
+        location.reload();
+    }
+</script>

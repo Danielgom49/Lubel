@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="flex flex-col justify-center items-center border border-black m-2">
+        <div class="h-full w-full mt-5">
+            <div class="text-center">
+                <h1 class="text-xl font-bold">AGREGAR CUARTO</h1>
+            </div>
+        </div>
+        <form action="/rooms/add" method="post" class="flex flex-col justify-center items-center w-full mx-5 p-5">
+            <div class="flex flex-row justify-start items-center w-full border-b border-black">
+                <a href="/rooms" class="bg-cyan-800 text-white rounded p-2 m-3">Volver al Listado</a>
+            </div>
+            <div class="flex flex-row justify-around items-center">
+                <div>
+                    <div class="flex flex-row justify-between items-center">
+                        <div class="m-4 flex flex-col">
+                            <label class="text-sm">Número del Cuarto</label>
+                            <input type="number" class="border border-black rounded h-10 w-48 px-2" name="number_room" />
+                        </div>
+                        <div class="m-4 flex flex-col">
+                            <label class="text-sm flex flex-row">Precio por Noche
+                                <p class="text-red-600">*</p>
+                            </label>
+                            <input type="number" class="border border-black rounded h-8 w-48 px-2" name="price" />
+                        </div>
+                    </div>
+                    <div class="flex flex-row justify-btween items-center">
+                        <div class="m-4 flex flex-col">
+                            <label class="text-sm  flex flex-row">Tipo de Cuarto
+                                <p class="text-red-600">*</p>
+                            </label>
+                            <select class="border border-black rounded h-8 w-48 px-2" name="type_room">
+                                <option value="0">Seleccione</option>
+                                <option value="Cuarto">Cuarto</option>
+                                <option value="Apartaestudio">Apartaestudio</option>
+                            </select>
+                        </div>
+                        <div class="m-4 flex flex-col">
+                            <label class="text-sm flex flex-row">Cantidad de Camas
+                                <p class="text-red-600">*</p>
+                            </label>
+                            <input type="number" class="border border-black rounded h-8 w-48 px-2" name="cant_beds" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-row justify-between items-center m-5">
+                <div>
+                    <button class="bg-cyan-800 text-white rounded p-2">Agregar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

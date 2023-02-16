@@ -1,0 +1,24 @@
+<div class="flex flex-col justify-center items-center my-10">
+    <form action="/signin" method="post">
+        <div class="flex flex-col items-center border-2 border-black rounded">
+            <div class="border-b-2 border-black p-5 w-full">
+                {{!-- <img scr="" alt="" /> --}}
+                <h1 class="font-bold text-xl text-center">INICIAR SESIÓN</h1>
+            </div>
+            <div class="flex flex-col justify-center items-center m-5">
+                <div class="flex flex-col justify-center items-start">
+                    <label class="">Usuario</label>
+                    <input type="text" name="username" class="w-64 h-10 border border-black rounded px-2 mt-2" />
+                </div>
+                <div class="flex flex-col justify-center items-start">
+                    <label class="">Conraseña</label>
+                    <input type="password" name="password" class="w-64 h-10 border border-black rounded px-2 mt-2" />
+                </div>
+            </div>
+            <div class="mb-5 flex flex-col justify-center items-center">
+                <button class="bg-cyan-800 text-white rounded p-2 w-24">Enviar</button>
+                <a href="/signup" class="underline py-2">Inscribirse</a>
+            </div>
+        </div>
+    </form>
+</div>

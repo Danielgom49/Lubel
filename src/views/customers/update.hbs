@@ -1,0 +1,98 @@
+<div class="container">
+    <div class="flex flex-col justify-center items-center my-5">
+        <div class="h-full w-full">
+            <div class="text-center">
+                <h1 class="text-xl font-bold">MODIFICAR CLIENTE</h1>
+            </div>
+        </div>
+        <form action="/customers/update/{{customer.id}}/{{customer.rooms_id}}" method="post"
+            class="flex flex-col justify-center items-center w-full mx-5 p-5">
+            <div class="flex flex-row justify-between items-center w-full  border-b border-black">
+                <a href="/customers" class="bg-cyan-800 text-white rounded p-2 m-3">Volver al Listado</a>
+                <div id="cont_price" class="flex flex-col justify-center items-center border border-black rounded w-52 h-12">
+                    <h1 class="text-lg flex flex-row justify-center items-center">
+                        <p class="font-bold" >TOTAL: </p>
+                        <p id="total" class="px-2">{{customer.price_customer}}</p>
+                        <div class="flex flex-row justify-between items-center hidden" id="price_container">
+                            <input type="number" class="w-24 border border-1 border-black mx-2 px-2 rounded" name="price_customer" id="price_customer" value="{{customer.price_customer}}" />
+                            <img src="/img/check.png" alt="edit" width="25" class="check cursor-pointer" id="check" />
+                        </div>
+                        <div class="cursor-pointer" id="editPrice">
+                            <img src="/img/edit.png" alt="edit" width="35" class="editPrice" />
+                        </div>
+                    </h1>
+                </div>
+            </div>
+            <div class="flex flex-row justify-around items-center">
+                <div>
+                    <div class="flex flex-row justify-between items-center">
+                        <div class="m-4 flex flex-col">
+                            <label class="text-sm">Nombre Completo</label>
+                            <input type="text" class="border border-black rounded h-8 w-48 px-2" name="username"
+                                value="{{customer.username}}" />
+                        </div>
+                        <div class="m-4 flex flex-col">
+                            <label class="text-sm">Documento</label>
+                            <input type="number" class="border border-black rounded h-8 w-48 px-2" name="document"
+                                value="{{customer.document}}" />
+                        </div>
+                    </div>
+                    <div class="flex flex-row justify-between items-center">
+                        <div class="m-4 flex flex-col">
+                            <label class="text-sm">Teléfono</label>
+                            <input type="number" class="border border-black rounded h-8 w-48 px-2" name="phone"
+                                value="{{customer.phone}}" />
+                        </div>
+                        <div class="m-4 flex flex-col">
+                            <label class="text-sm">Nacionalidad</label>
+                            <input type="text" class="border border-black rounded h-8 w-48 px-2" name="nationality"
+                                value="{{customer.nationality}}" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex flex-row justify-between items-center">
+                        <div class="m-4 flex flex-col">
+                            <label class="text-sm">C. Personas</label>
+                            <input type="number" class="border border-black rounded h-8 w-24 px-2" name="cant_person"
+                                value="{{customer.cant_person}}" />
+                        </div>
+                        <div class="m-4 flex flex-col">
+                            <label class="text-sm">C. Noches</label>
+                            <input id="cant_day" type="number" class="border border-black rounded h-8 w-24 px-2" name="cant_day"
+                                value="{{customer.cant_day}}" />
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div class="m-4 flex flex-col">
+                            <label class="text-sm">Cuarto</label>
+                            {{!-- Cuartos disponibles --}}
+                            <select class="border border-black rounded h-8 w-48 px-2" name="rooms_id"  id="rooms_id">
+                                {{#if rooms.type_room}}
+                                    <option value="{{rooms.id}}" name="{{rooms.price}}">{{rooms.type_room}} {{rooms.number_room}}</option>
+                                {{else}}
+                                    <option value="0">Seleccione</option>
+                                {{/if}}
+                                {{#each roomsActive}}
+                                    <option value="{{id}}" name="{{price}}">{{type_room}} {{number_room}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="m-4 flex flex-col">
+                    <label class="text-sm">Fecha</label>
+                    <input type="date" class="border border-black rounded h-8 w-36 px-2" name="created_at" value="{{customer.created_at}}" />
+                </div>
+            </div>
+            <div class="flex flex-row justify-between items-center m-5">
+                <div>
+                    <button class="bg-cyan-800 text-white rounded p-2">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

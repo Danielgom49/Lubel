@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="flex flex-col justify-center items-center my-5">
+        <div class="h-full w-full">
+            <div class="text-center">
+                <h1 class="text-xl font-bold">CLIENTES</h1>
+            </div>
+        </div>
+        <div class="flex flex-col justify-center items-center rounded w-full mx-5 p-5">
+            <div class="flex flex-row justify-between items-center w-full border-b border-black p-2 ">
+                <div>
+                    <a href="/customers/add" class="bg-cyan-800 text-white rounded p-2">Agregar Cliente</a>
+                </div>
+                <form action="/customers/search" method="post">
+                    <input type="text" class="border border-black rounded-lg h-10 w-64 px-2" name="search"
+                        placeholder="Nombre, Documento ..." />
+                    <button class="bg-cyan-800 text-white rounded h-10 p-2">Buscar</button>
+                </form>
+            </div>
+            <div class="flex flex-col-reverse items-center">
+                <table class="table-auto m-5 border-separate border-collapse border border-slate-400 ...">
+                    <thead>
+                        <tr>
+                            <th class="border border-slate-300 ... px-2">N°</th>
+                            <th class="border border-slate-300 ... px-2">Nombre</th>
+                            <th class="border border-slate-300 ... px-2">Documento</th>
+                            <th class="border border-slate-300 ... px-2">Teléfono</th>
+                            <th class="border border-slate-300 ... px-2">Nacionalidad</th>
+                            <th class="border border-slate-300 ... px-2">Personas</th>
+                            <th class="border border-slate-300 ... px-2">Noches</th>
+                            <th class="border border-slate-300 ... px-2">Precio</th>
+                            <th class="border border-slate-300 ... px-2">Cuarto</th>
+                            <th class="border border-slate-300 ... px-2">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each customers}}
+                        <tr class="text-center {{#if topay}} bg-white {{else}} bg-cyan-100 {{/if}}">
+                            <td class="border border-slate-300 ... px-2">{{id}}</td>
+                            <td class="border border-slate-300 ... px-2 flex flex-col">
+                                {{username}}
+                                <div class="flex flex-row justify-around">
+                                    {{#if topay}}
+                                        <a href="/customers/topay/{{id}}/{{rooms_id}}" type="button" class="hover:cursor-pointer underline text-green-700 px-2 text-xs">Saldar</a>
+                                        <a href="/customers/update/{{id}}/{{rooms_id}}" type="button" class="hover:cursor-pointer underline text-gray-600 px-2 text-xs">Modificar</a>
+                                    {{/if}}
+                                    <a href="/customers/delete/{{id}}/{{rooms_id}}" type="button" class="hover:cursor-pointer underline text-red-600 px-2 text-xs">Eliminar</a>
+                                </div>
+                            </td>
+                            <td class="border border-slate-300 ... px-2">{{document}}</td>
+                            <td class="border border-slate-300 ... px-2">{{phone}}</td>
+                            <td class="border border-slate-300 ... px-2">{{nationality}}</td>
+                            <td class="border border-slate-300 ... px-2">{{cant_person}}</td>
+                            <td class="border border-slate-300 ... px-2">{{cant_day}}</td>
+                            <td class="border border-slate-300 ... px-2">{{price_customer}}</td>
+                            <td class="border border-slate-300 ... px-2">{{type_room}} {{number_room}}</td>
+                            <td class="border border-slate-300 ... px-2 text-xs">{{created_at}}</td>
+                        </tr>
+                        {{else}}
+                        <p class="italic ...">No se encontraron datos.</p>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

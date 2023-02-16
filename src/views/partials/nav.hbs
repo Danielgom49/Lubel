@@ -1,0 +1,44 @@
+{{#if user}}
+    <nav class="show bg-cyan-800 flex flex-col justify-center space-x-2 items-center fixed h-10 w-screen px-10 text-white cursor-pointer hover:h-12">
+        <img id="imgNav" class="show" src="/img/nav.png" alt="arrow" width="30" />
+    </nav>
+    <nav class="nav nav-hidden bg-cyan-800 flex  space-x-2 items-center fixed h-16 w-screen px-10 text-white">
+        <ul class="nav flex flex-row justify-around items-center w-full">
+            <li class="underline">
+                <a href="/customers">Clientes</a>
+            </li>
+            <li class="underline">
+                <a href="/rooms">Cuartos</a>
+            </li>
+            {{!-- <li class="underline">
+                <a href="/configuration">configuración</a>
+            </li> --}}
+            <li class="underline">
+                <a href="/logout">Cerrar Sesión</a>
+            </li>
+        </ul>
+    </nav>
+{{/if}}
+<script language="javascript" type="text/javascript">
+    document.addEventListener("DOMContentLoaded", (e) => {
+        const navHidden = document.querySelector(".nav-hidden");
+        const navShow = document.querySelector(".show");
+        navHidden.classList.add("hidden");
+        navShow.classList.remove("hidden");
+    })
+    document.addEventListener("click", (e) => {
+        const navHidden = document.querySelector(".nav-hidden");
+        const navShow = document.querySelector(".show");
+        const button = e.target.classList.contains("show");
+        const nav = e.target.classList.contains("nav");
+        if (button) {
+            navHidden.classList.remove("hidden");
+            navShow.classList.add("hidden");
+        }
+        console.log(nav)
+        if(!button && !nav) {
+            navHidden.classList.add("hidden");
+            navShow.classList.remove("hidden");
+        }
+    })
+</script>

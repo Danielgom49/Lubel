@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="flex flex-col justify-center items-center my-5">
+        <div class="h-full w-full">
+            <div class="text-center">
+                <h1 class="text-xl font-bold">CUARTOS</h1>
+            </div>
+        </div>
+        <div class="flex flex-col justify-center items-center rounded w-full mx-5 p-5">
+            <form action="/rooms/search" method="post" class="flex flex-row justify-between items-center w-full border-b border-black p-2 ">
+                <div>
+                    <a href="/rooms/add" class="bg-cyan-800 text-white rounded p-2">Agregar Cuarto</a>
+                </div>
+                <div class="flex flex-row justify-evenly items-center">
+                    <div class="mx-2">
+                        <select class="border border-black rounded h-8 w-32 px-2" name="type_room">
+                            <option value="0">T. Cuarto</option>
+                            <option value="Cuarto">Cuarto</option>
+                            <option value="Apartaestudio">Apartaestudio</option>
+                        </select>
+                    </div>
+                    <div class="mx-2">
+                        <select class="border border-black rounded h-8 w-32 px-2" name="active">
+                            <option value="0">Estado</option>
+                            <option value="Disponible">Disponible</option>
+                            <option value="Ocupado">Ocupado</option>
+                        </select>
+                    </div>
+                    <div class="mx-2">
+                        <input type="text" class="border border-black rounded-lg h-10 w-56 px-2" name="search" placeholder="N° Cuarto" />
+                    </div>
+                    <button class="bg-cyan-800 text-white rounded h-10 p-2">Buscar</button>
+                </div>
+            </form>
+            <div class="flex flex-col-reverse items-center">
+                <table class="table-auto m-5 border-separate border-collapse border border-slate-400 ...">
+                    <thead>
+                        <tr>
+                            <th class="border border-slate-300 ... px-2">Número del Cuarto</th>
+                            <th class="border border-slate-300 ... px-2">Precio por Día</th>
+                            <th class="border border-slate-300 ... px-2">Cantidad de Camas</th>
+                            <th class="border border-slate-300 ... px-2">Tipo Cuarto</th>
+                            <th class="border border-slate-300 ... px-2">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each rooms}}
+                        <tr class="text-center">
+                            <td class="border border-slate-300 ... px-2 flex flex-col">
+                                {{number_room}}
+                                <div class="flex flex-row justify-around">
+                                    <a href="/rooms/update/{{id}}" type="button" class="hover:cursor-pointer underline text-gray-600 px-2 text-xs">Modificar</a>
+                                    <a href="/rooms/delete/{{id}}" type="button" class="hover:cursor-pointer underline text-red-600 px-2 text-xs">Eliminar</a>
+                                </div>
+                            </td>
+                            <td class="border border-slate-300 ... px-2">{{price}}</td>
+                            <td class="border border-slate-300 ... px-2">{{cant_beds}}</td>
+                            <td class="border border-slate-300 ... px-2">{{type_room}}</td>
+                            <td class="border border-slate-300 ... px-2">{{active}}</td>
+                        </tr>
+                        {{else}}
+                        <p class="italic ...">No se encontraron datos.</p>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUBEL</title>
+    {{!-- GOOGLE FONTS --}}
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    {{!-- TAILWIND --}}
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    {{!-- STYLES --}}
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div id="lubel" class="flex flex-row bg-cyan-100">
+        {{> nav}}
+        <div class="flex flex-col items-center m-5 w-screen h-screen">
+            <div class="bg-white flex flex-col justify-center items-center w-5/6 border-2 border-white rounded-lg my-12 mt-20">
+                <div>
+                    {{> message}}
+                    {{{ body }}}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let rooms_id = document.getElementById("rooms_id");
+    let editPrice = document.getElementById("editPrice");
+    let check = document.getElementById("check");
+
+    function back() {
+        window.history.back();
+    }
+
+    rooms_id.addEventListener('change', function(e){
+        let totalPrice = document.getElementById("total");
+        let cant_day = document.getElementById("cant_day");
+        let price_customer = document.getElementById("price_customer");
+        let option = e.target.options.selectedIndex;
+        let price = parseFloat(e.target.options[option].attributes[1].nodeValue);
+        if (cant_day.value != ""){
+            totalPrice.textContent = price * cant_day.value;
+            price_customer.value = price * cant_day.value;
+        }else{
+            e.target.options[0].setAttribute("selected", "true");
+            cant_day.style.border = "1px solid red";
+            cant_day.focus();
+            cant_day.style.outline = "1px solid red";
+        }
+    })
+
+    editPrice.addEventListener('click', function(){
+        let price_container = document.getElementById("price_container");
+        let total = document.getElementById("total");
+        price_container.classList.remove("hidden");
+        total.classList.add("hidden");
+        editPrice.classList.add("hidden");
+    })
+
+    check.addEventListener('click', function(){
+        let price_container = document.getElementById("price_container");
+        let price_customer = document.getElementById("price_customer").value;
+        let total = document.getElementById("total");
+        editPrice.classList.remove("hidden");
+        total.classList.remove("hidden");
+        price_container.classList.add("hidden");
+        total.textContent = price_customer;
+    })
+        
+</script>
+</html>
